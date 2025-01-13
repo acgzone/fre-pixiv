@@ -7,7 +7,7 @@
   } from "https://cdn.jsdelivr.net/npm/preact-htm-signals-standalone/dist/standalone.js";
 
   const name = signal('');
-  const animes = singal([])
+  const animes = signal([])
 
   function onSearch(){
     fetch(`https://danmu.deno.dev/danmu/list?gv=0&p=1&title=${name}`).then(res=>res.json()).then(data=>{
