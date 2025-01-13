@@ -5,6 +5,7 @@
   button{background:#333;color:#fff;border:0;padding:4px;}
   input{width:50px;border:1px solid #eee;height:26px;margin:0 10px}
   li{list-style:none;padding:10px;border-bottom:1px solid #eee;width: 100%;display:flex;justify-content:space-between;}
+  p{padding:0 10px}
 </style>
 <script type="module">
   import {
@@ -33,8 +34,8 @@
   function App() {
     return html`
       <main>
-        <p>${name}</p>
         <input type="text" onInput=${(e)=>name.value=e.target.value}></input>
+        <p>${name}</p>
         <button onClick=${() => onSearch()}>搜索</button>
         ${animes.value.map(a=>html`<li>${a.animeTitle}<div><input type="text" onInput=${(e)=>gv.value=e.target.value}/> <button onClick=${() => onBind(a.animeId)}>绑定</button></div></li>`)}
       </main>
