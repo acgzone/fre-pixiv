@@ -34,9 +34,8 @@
   function App() {
     return html`
       <main>
-        <input type="text" onInput=${(e)=>name.value=e.target.value} placeholder="例：博人传" style="width:200px"></input>
+        <input type="text" onInput=${(e)=>name.value=e.target.value} placeholder="例：博人传" style="width:200px"></input> <button onClick=${() => onSearch()}>搜索</button>
         <p>${name}</p>
-        <button onClick=${() => onSearch()}>搜索</button>
         ${animes.value.map(a=>html`<li>${a.animeTitle}<div>gv<input type="text" onInput=${(e)=>gv.value=e.target.value} placeholder="gv号"/> <button onClick=${() => onBind(a.animeId)}>绑定</button></div></li>`)}
       </main>
     `;
