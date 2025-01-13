@@ -24,7 +24,7 @@
         <button onClick=${() => onSearch()}>
           搜索
         </button>
-        <pre>${animes}</pre>
+        ${animes.map(a=>html`<li>${a.animeTitle}</li>`)}
       </div>
     `;
   }
