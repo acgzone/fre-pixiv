@@ -7,22 +7,24 @@
   } from "https://cdn.jsdelivr.net/npm/preact-htm-signals-standalone/dist/standalone.js";
 
   const name = signal('');
+  const animes = singal([])
 
   function onSearch(){
     fetch(`https://danmu.deno.dev/danmu/list?gv=0&p=1&title=${name}`).then(res=>res.json()).then(data=>{
       console.log(data.animes)
+      animes.value=data.animes
     })
   }
 
   function App() {
     return html`
       <div>
-        <h1 class>${name.value}</h1>
+        <h1 class>${name}</h1>
         <input type="text" onInput=${(e)=>name.value=e.target.value}></input>
         <button onClick=${() => onSearch()}>
           搜索
         </button>
-        <p>Counter: ${count}</p>
+        <pre>${animes}</pre>
       </div>
     `;
   }
