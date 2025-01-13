@@ -3,7 +3,7 @@
 <style>
   main{width:600px;margin:10px auto}
   button{background:#333;color:#fff;border:0;padding:4px;}
-  input{width:100px;border:1px solid #eee;height:26px;margin:0 10px}
+  input{width:60px;border:1px solid #eee;height:26px;margin:0 10px}
   li{list-style:none;padding:10px;border-bottom:1px solid #eee;width: 100%;display:flex;justify-content:space-between;}
   p{padding:0 10px}
 </style>
@@ -34,10 +34,10 @@
   function App() {
     return html`
       <main>
-        <input type="text" onInput=${(e)=>name.value=e.target.value}></input>
+        <input type="text" onInput=${(e)=>name.value=e.target.value} placeholder="例：博人传" style="width:200px"></input>
         <p>${name}</p>
         <button onClick=${() => onSearch()}>搜索</button>
-        ${animes.value.map(a=>html`<li>${a.animeTitle}<div><input type="text" onInput=${(e)=>gv.value=e.target.value}/> <button onClick=${() => onBind(a.animeId)}>绑定</button></div></li>`)}
+        ${animes.value.map(a=>html`<li>${a.animeTitle}<div>gv<input type="text" onInput=${(e)=>gv.value=e.target.value} placeholder="gv号"/> <button onClick=${() => onBind(a.animeId)}>绑定</button></div></li>`)}
       </main>
     `;
   }
