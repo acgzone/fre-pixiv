@@ -1,3 +1,4 @@
+<title>弹弹绑定</title>
 <div id="app"></div>
 <script type="module">
   import {
@@ -7,6 +8,7 @@
   } from "https://cdn.jsdelivr.net/npm/preact-htm-signals-standalone/dist/standalone.js";
 
   const name = signal('');
+  const gv = signal(0)
   const animes = signal([])
 
   function onSearch(){
@@ -16,15 +18,19 @@
     })
   }
 
+  functions onBind(did){
+    fetch(`https://danmu.deno.dev/danmu/bind?gv=${gv}&did=${did}`).then(res=>res.json()).then(data=>{
+      console.log(data)
+    })
+  }
+
   function App() {
     return html`
       <div>
         <h1 class>${name}</h1>
         <input type="text" onInput=${(e)=>name.value=e.target.value}></input>
-        <button onClick=${() => onSearch()}>
-          搜索
-        </button>
-        ${animes.value.map(a=>html`<li>${a.animeTitle}</li>`)}
+        <button onClick=${() => onSearch()}>搜索</button>
+        ${animes.value.map(a=>html`<li>${a.animeTitle}<input type="text" onInput=${(e)=>gv.value=e.target.value}/> <button onClick=${() => onBind(a.animeId)}>绑定</button></li>`)}
       </div>
     `;
   }
